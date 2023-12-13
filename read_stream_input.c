@@ -1,46 +1,24 @@
 #include "custom_shell.h"
 
-#define BUFFER_SIZE 1024
-
 /**
  * read_stream_input - reads a line from the stream
  *
  * Return: pointer that points to the read line
  */
 
-char *read_stream_input(void);
-
-int main(void)
-{
-char *input;
-
-while (1)
-{
-input = read_stream_input();
-
-if (input == NULL)
-{
-fprintf(stderr, "allocation error in main");
-exit(EXIT_FAILURE);
-}
-
-/* Process the input or do something with it */
-printf("Input: %s\n", input);
-
-free(input);
-}
-
-return (0);
-}
-
 char *read_stream_input(void)
+
 {
-int buffer_size = BUFFER_SIZE;
+
+int buffer_size = 1024;
 int j = 0;
+
 char *stream_input = malloc(sizeof(char) * buffer_size);
 int c;
 
+
 if (stream_input == NULL)
+
 {
 fprintf(stderr, "allocation error in read_stream_input");
 exit(EXIT_FAILURE);
@@ -53,7 +31,7 @@ c = getchar(); /* read the first character from the stream */
 if (c == EOF)
 {
 free(stream_input);
-return (NULL);
+exit(EXIT_SUCCESS);
 }
 else if (c == '\n')
 {
@@ -69,7 +47,7 @@ j++;
 
 if (j >= buffer_size)
 {
-buffer_size += BUFFER_SIZE;
+buffer_size += buffer_size;
 stream_input = realloc(stream_input, buffer_size);
 
 if (stream_input == NULL)
@@ -80,3 +58,4 @@ exit(EXIT_FAILURE);
 }
 }
 }
+
