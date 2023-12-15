@@ -2,13 +2,15 @@
 
 
 /**
- * launch_and_execute - creates a new process and executes a command with its arguments
+ * launch_and_execute - creates a new process and
+ * executes a command with its arguments.
  *
- * this function forks a new process and uses execvp to execute the specified
- * command with its arguments. It waits for the child process to complete
- * before returning.
+ * this function forks a new process and uses execvp to execute
+ * the specified command with its arguments. It waits for
+ * the child process to complete before returning.
  *
- * @arguments: array of strings containing the command and its arguments
+ * @arguments: array of strings containing
+ * the command and its arguments
  * Return: 1 on success, -1 on failure
  */
 
