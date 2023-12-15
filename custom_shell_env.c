@@ -8,27 +8,17 @@
  */
 
 int custom_shell_env(char **arguments)
+
 {
-char **args;
-int count, i;
+int i = 0;
+(void)(**arguments);
 
-count = word_count(arguments[0], &args);
-
-if (count == -1)
-{
-perror("Error in word_count");
-return (0);
-}
-
-for (i = 0; environ[i]; i++)
+while (environ[i])
 {
 write(STDOUT_FILENO, environ[i], strlen(environ[i]));
-write(STDOUT_FILENO, "\n", 1);
+	write(STDOUT_FILENO, "\n", 1);
+i++;
+}
+return (-1);
 }
 
-for (i = 0; i < count; i++)
-free(args[i]);
-free(args);
-
-return (1);
-}
