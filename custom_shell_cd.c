@@ -15,6 +15,7 @@
 int custom_shell_cd(char **arguments)
 {
 char *target_directory;
+char current_directory[MAX_PATH_LENGTH];
 
 if (arguments[1] == NULL)
 {
@@ -42,7 +43,6 @@ else
 target_directory = arguments[1];
 }
 
-char current_directory[MAX_PATH_LENGTH];
 if (getcwd(current_directory, sizeof(current_directory)) == NULL)
 {
 perror("getcwd");
@@ -71,9 +71,17 @@ return (1);
 }
 
 int main(void)
-{
-char *args[] = {"cd", "path/to/directory", NULL};
-custom_shell_cd(args);
 
+{
+/* checks if the standard input is coming from a terminal */
+if (isatty(STDIN_FILENO) == 1)
+{
+run_interactive_custom_shell();
+}
+else
+{
+run_non_interactive_custom_shell();
+}
 return (0);
 }
+
