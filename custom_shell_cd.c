@@ -1,3 +1,4 @@
+#include "custom_shell.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -68,20 +69,5 @@ return (0);
 }
 
 return (1);
-}
-
-int main(void)
-
-{
-/* checks if the standard input is coming from a terminal */
-if (isatty(STDIN_FILENO) == 1)
-{
-run_interactive_custom_shell();
-}
-else
-{
-run_non_interactive_custom_shell();
-}
-return (0);
 }
 
