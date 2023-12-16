@@ -33,7 +33,6 @@ int custom_shell_cd(char **arguments);
 int custom_shell_env(char **arguments);
 int custom_shell_help(char **arguments);
 int custom_shell_exit(char **arguments);
-int custom_shell_comment(char *cmd);
 
 #endif
 
